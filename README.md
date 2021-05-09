@@ -9,13 +9,19 @@ It's in 109 lines, so it won't take too long.
 ## Getting started
 
 1. Install libcurl
+```
 apt install libcurl4-openssl-dev
+```
 
-2. Modify THE_CHANNEL_ID/THE_SLACK_TOKEN in watcher.c
+2. Modify THE_CHANNEL_ID/THE_SLACK_TOKEN in watcher.c.
 (I know, not great, but I am currently too lazy to handle that properly)
 
 3. Compile
+```
 make
+```
 
 4. Watch a file
+```
 watcher my-log-file
+```
