@@ -1,4 +1,4 @@
 .POSIX:
 
 watcher: watcher.c
-	$(CC) -o $@ -Wall -Wextra $<
+	$(CC) -g -o $@ -Wall -Wextra $< -lcurl
