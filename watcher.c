@@ -84,11 +84,9 @@ int main(int ac, char **av)
 		return EXIT_FAILURE;
 	}
 	for (;;) {
-		if (read(inotify_fd, &event, sizeof(event)) == -1
-		    && errno != EINTR) {
-			perror("read");
-			return EXIT_FAILURE;
-		} else {
+		ssize_t ret;
+
+		if ((ret = read(inotify_fd, &event, sizeof(event))) > 0) {
 			char buffer[BUF_SIZE];
 			ssize_t n;
 
@@ -100,6 +98,9 @@ int main(int ac, char **av)
 				perror("read");
 				return EXIT_FAILURE;
 			}
+		} else if (ret == -1 && errno != EINTR) {
+			perror("read");
+			return EXIT_FAILURE;
 		}
 	}
 	curl_easy_cleanup(curl);
