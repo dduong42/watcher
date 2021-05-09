@@ -29,7 +29,6 @@ void post_to_slack(CURL * curl, char *buffer)
 	curl_easy_setopt(curl, CURLOPT_URL,
 			 "https://slack.com/api/chat.postMessage");
 	curl_easy_setopt(curl, CURLOPT_POSTFIELDS, payload);
-	fprintf(stderr, "payload: %s\n", payload);
 	res = curl_easy_perform(curl);
 	if (res != CURLE_OK) {
 		fprintf(stderr, "curl_easy_perform() failed: %s\n",
